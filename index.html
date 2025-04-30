@@ -1,26 +1,115 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Blur Edge</title>
+  <style>
+    body {
+        margin: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+    }
+
+    #pagBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        filter: grayscale(50%) blur(3px);
+        transform: scale(1.05);
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    header {
+        position: fixed;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15vh;
+    }
+
+    header .accountBox {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(0, 0, 0, 0.25);
+        box-shadow: 3px 3px 5px black;
+        border-radius: 8px;
+        height: 15vh;
+        max-height: 150px;
+        width: 300px;
+    }
+
+    .accountBox h2, h4 {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 60%;
+    }
+
+    .content {
+        position: relative;
+        background-color: transparent;
+        width: 100%;
+        height: 70vh;
+        top: 15vh;
+        left: 0;
+    }
+
+    footer {
+        position: fixed;
+        background-color: transparent;
+        width: 100%;
+        height: 15%;
+        left: 0;
+        bottom: 0;
+    }
+
+    footer h1 {
+        position: fixed;
+        text-align: left;
+        bottom: 0;
+        padding-left: 1em;
+        text-shadow: 0 0 5px black;
+        font-weight: bold;
+        font-size: vw;
+        letter-spacing: 4px;
+    }
+  </style>
 </head>
 <body>
-    <img src="https://github.com/EnokhIovan/nyubaRek/blob/main/clasroomImg.jpg?raw=true" id="pagBg">
-
-    <script>
-        document.getElementById('pagBg').style.width = '100vw';
-    </script>
+    <img src="https://github.com/EnokhIovan/nyubaRek/blob/main/clasroomImg.jpg?raw=true" id="pagBg" alt="Background" />
+    <div class="overlay"></div>
+    <header>
+        <div class="accountBox">
+            <img src="https://raw.githubusercontent.com/EnokhIovan/nyubaRek/refs/heads/main/akuSmaksta.webp" style="height: 100%">
+            <div>
+                <h2>Henokh Giovan Hananto</h2>
+                <h4>Kelas 12.3</h4>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+        </div>
+    </main>
+    <footer>
+        <h1>Kumpulan Tugas Kursus</h1>
+    </footer>
 </body>
 </html>
