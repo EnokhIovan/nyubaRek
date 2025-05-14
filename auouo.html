@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TestCoy</title>
+        <style>
+            body {
+                margin: 0;
+				font-family: Segoe UI;
+                user-select: none;
+            }
+            #login {
+                display: flex;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                user-select: none;
+                display: none;
+            }
+            #login #loginTrigger {
+                cursor: pointer;
+            }
+            #home{
+                /* display: none; */
+            }
+            .templateContainer {
+                background-color: blue;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+                gap: 32px;
+                padding: 8px;
+                max-width: calc(100vw - 16px);
+                margin: 0 auto;
+            }
+            .boxTemplate {
+                cursor: pointer;
+                width: 175px;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                background-color: green;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid yellowgreen;
+                box-shadow: 0 0 4px grey;
+            }
+            .boxTemplate h1,
+			.boxTemplate p {
+                color: yellowgreen;
+                margin: 0;
+            }
+            .boxTemplate h1 {
+                font-size: 3em;
+            }
+            .boxTemplate p {
+                font-family: Segoe UI;
+            }
+            .templateContainer .boxTemplate .header{
+                width: 100%;
+                /* background-color: red; */
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+            .templateContainer .boxTemplate .header p{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 5;
+                overflow: hidden;
+            }
+            .templateContainer .boxTemplate .header .titleTemplateBox{
+                margin: 0;
+                margin-bottom: 8px;
+                padding-bottom: 4px;
+                font-size: 110%;
+                font-weight: bold;
+                border-bottom: 2px solid rgb(255, 215, 0);
+            }
+            .templateContainer .boxTemplate .footer{
+                width: 100%;
+                /* background-color: blueviolet; */
+                height: 50%;
+            }
+            .templateContainer .boxTemplate .footer .descriptionTemplateBox{
+                border: 2px solid rgba(173, 255, 47, 0.5);
+                border-radius: 8px;
+                margin: 0;
+            }
+            .bgBlackForm {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                display: none;
+            }
+            .formBox {
+                position: absolute;
+                padding: 12px;
+				width: 600px;
+                max-width: 80%;
+                max-height: 85%;
+                background-color: rgb(35, 35, 35);
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border: 2px solid white;
+            }
+            .formBox .header {
+                display: flex;
+                width: 100%;
+            }
+			.formBox .header h1 {
+				width: 300px;
+				max-width: 60%; 
+				border-bottom: 2px solid grey; 
+				text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+			}
+            .formBox .header p {
+                cursor: pointer;
+                margin: 0;
+                font-size: 2em;
+                font-weight: bold;
+                align-self: flex-start;
+            }
+            .formBox input {
+				font-size: 1.5em;
+                color: white;
+                background-color: transparent;
+				width: 400px;
+                max-width: 80%;
+                border: none;
+                border-bottom: 1px solid white;
+                text-align: center;
+            }
+            .themeColor {
+                color: white;
+                display: flex;
+                justify-content: space-between;
+            }
+			.themeColor label, 
+            .themeColor select {
+				font-size: 1.2em;
+			}
+            .themeColor select {
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid grey;
+                color: white;
+                margin-left: 10px;
+                text-align: center;
+            }
+            .themeColor option {
+                background-color: rgb(35, 35, 35);
+            }
+			.formBox textarea{
+				width:80%; 
+				background-color: white;
+                border-radius: 8px;
+			}
+            .formBox button {
+                font-size: 1.4em;
+                color: white;
+                background: yellowgreen;
+                border: none;
+                padding: 8px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section id="login">
+            <header>
+                <h1>To Do Task</h1>
+            </header>
+            <main>
+                <p id="loginTrigger">Ayo Pukul aku Pukul Aku</p>
+            </main>
+        </section>
+        <section id="home" style="display: none">
+            <main>
+                <!-- Template Container -->
+                <div class="templateContainer">
+                    <!-- Box For Add New Template -->
+                    <div id="box4CreateNewTemplate" class="boxTemplate">
+                        <h1>+</h1>
+                        <p>Add Template</p>
+                    </div>
+                    <!-- Created Template Location -->
+                </div>
+                
+                <!-- Form Box For Add New Template -->
+                <div id="addForm">
+                    <div class="bgBlackForm">
+                        <div class="formBox">
+                            <div class="header">
+                                <h1>New Template</h1>
+                                <p id="clsFormBox">x</p>
+                            </div>
+                            <input id="datInTitle" type="text" placeholder="Judul Template">
+                            <br>
+                            <div class="themeColor">
+                                <label for="themeColor">Theme Color: </label>
+                                <select id="datInThemeColor" name="theme">
+                                    <!-- Option Diatur Oleh Java Script -->
+                                </select>
+                            </div>
+                            <br>
+                            <label for="desc">Description: </label>
+                            <textarea id="datInDescription" name="Description" rows="5" placeholder="Tuliskan deskripsi"></textarea>
+                            <br>
+                            <button id="btn4AddNewTemplate">Add Template</button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </section>
+        <section id="task">
+            <header>
+                <h1>Header</h1>
+            </header>
+            <main>
+                <p id="demo">asdasd</p>
+            </main>
+        </section>
+        
+        <script>
+            /*LOGIN SESION*/
+            const expiredTime = 10000;
+
+            /*Function*/
+            //Black All Session Except One Section + Save User Last Section
+            function blackAllSection(except){
+                document.querySelectorAll('section').forEach(sec => {
+                    sec.style.display = 'none';
+                });
+                document.getElementById(except).style.display = 'flex';
+                localStorage.setItem('userLastSection', except);
+            }
+
+            //Check User Activity Status
+            function checkSession(){
+                const expiredCalc = Date.now() - parseInt(localStorage.getItem('userLastActive'),10)
+                if(!localStorage.getItem('userEnteredState')){
+                    blackAllSection('login');
+                } else if (expiredCalc > expiredTime){
+                    localStorage.removeItem('userEnteredState');
+                    localStorage.removeItem('userLastSection');
+                    blackAllSection('login');
+                } else if(localStorage.getItem('userEnteredState') === 'true'){
+                    blackAllSection(localStorage.getItem('userLastSection'));
+                } 
+            }
+
+            /*Login System*/
+            //Login Trigger System
+            document.getElementById('loginTrigger').addEventListener('click', () => {
+                blackAllSection('home');
+                localStorage.setItem('userEnteredState', 'true');
+            })
+
+            //Page Load System
+            document.addEventListener('DOMContentLoaded', () => {
+              checkSession();
+              loadUserProgress();   
+            }
+            )
+
+            //Save User Last Activity System
+            window.addEventListener('beforeunload', () => {
+                if(localStorage.getItem('userEnteredState') === 'true'){
+                    localStorage.setItem('userLastActive', Date.now());
+                }
+            })
+    
+            //Checking All User Status
+            setInterval(()=>{
+                console.log('Entered: ' + localStorage.getItem('userEnteredState') + '\nActive: ' + localStorage.getItem('userLastActive') + '\nSection: ' + localStorage.getItem('userLastSection') + '\n\n' + localStorage.getItem('userCreatedTemplateBox'));
+            }, 1000)
+
+
+
+
+
+            /*HOME ADDING EVENT LISTENER*/
+            /*Function*/
+            function addTemplateBoxToContainer(title, description, themeColor){
+                const templateContainer = document.querySelector('.templateContainer')
+                
+                //Template Box
+                const templateBox = document.createElement('div');
+                templateBox.setAttribute('data-id', crypto.randomUUID());
+                templateBox.classList.add('boxTemplate');
+                templateBox.style.backgroundColor = themeColor;
+
+                templateBox.addEventListener('click', (e) => {
+                    console.log("UUID: " + e.currentTarget.dataset.id);
+                    blackAllSection('task');
+                    document
+                })
+                
+                //Title Box
+                const titleBox = document.createElement('div');
+                titleBox.classList.add('header');
+                
+                //Description Box
+                const descBox = document.createElement('div');
+                descBox.classList.add('footer');
+                    
+                //Title Text 
+                const titleText = document.createElement('p');
+                titleText.classList.add('titleTemplateBox');
+                titleText.textContent = toTitleCase(title);
+                    
+                //Description Text
+                const descText = document.createElement('p');
+                descText.classList.add('descriptionTemplateBox');
+                descText.textContent = description;
+    
+                //Initialize
+                descBox.appendChild(descText);
+                titleBox.appendChild(titleText);
+                templateBox.appendChild(titleBox);
+                templateBox.appendChild(descBox);
+                templateContainer.appendChild(templateBox);
+            }
+
+            function toTitleCase(text){
+                return text
+                .split(' ')
+                .map(data => data.charAt(0).toUpperCase() + data.slice(1))
+                .join(' ');
+            }
+
+            // Save And Load User Progress
+            const templateContainer = document.querySelector('.templateContainer');
+            var colorOption = ['Green', 'White', 'Charcoal Gray', 'Deep Purple', 'Cream', 'Wood Tones', 'Tosca'];
+            var colorOptionRGB = ['rgb(0, 128, 0)', 'rgb(255, 255, 255)', 'rgb(35, 35, 35)', 'rgb(75, 0, 130)', 'rgb(255, 248, 220)', 'rgb(139, 69, 19)', 'rgb(0, 128, 128)'];
+            var colorOptionCodeInHex = ['#008000', '#ffffff', '#232323', '#4B0082', '#fff8dc', '#8B4513', '#008080'];
+            
+            function saveUserProgress(){
+                const createdTemplateBox = 
+                Array
+                .from(templateContainer.children)
+                .filter(box => 
+                box.querySelector('.titleTemplateBox') && 
+                box.querySelector('.descriptionTemplateBox') &&
+                box !== document.getElementById('box4CreateNewTemplate'))
+                .map(boxTemplate => {
+                    const itemId = boxTemplate.dataID;
+                    const itemTitle = boxTemplate.querySelector('.titleTemplateBox').textContent;
+                    const itemDesc = boxTemplate.querySelector('.descriptionTemplateBox').textContent;
+                    const itemThemeColor = boxTemplate.style.backgroundColor;
+                    const itemCreated = Date.now();
+                    return { id: itemId, title: itemTitle, description: itemDesc, themeColor: itemThemeColor, createdAt: itemCreated};
+                })
+                localStorage.setItem('userCreatedTemplateBox', JSON.stringify(createdTemplateBox));
+            }
+            // localStorage.removeItem('userCreatedTemplateBox')
+            
+            function loadUserProgress(){
+                const jsLS = JSON.parse(localStorage.getItem('userCreatedTemplateBox')) || [];
+                
+                jsLS.forEach(item => {
+                    addTemplateBoxToContainer(item.title, item.description, item.themeColor);
+                })
+            }
+            
+
+            /*Main System*/
+            const formBoxTmplt = document.querySelector('.bgBlackForm');
+            //Form Box Trigger System
+            document.querySelector('#box4CreateNewTemplate').addEventListener('click', () => {
+                formBoxTmplt.style.display = 'flex';
+            });
+
+            //Form Box Close Button System
+            document.getElementById('clsFormBox').addEventListener('click', () => {
+                formBoxTmplt.style.display = 'none';
+            })
+
+            //Theme Color Select Option System
+
+            for (a=0; a<colorOption.length; a++){
+                const optColor = document.createElement('option');
+                optColor.textContent = colorOption[a];
+                optColor.value = colorOptionRGB[a];
+
+                document.getElementById('datInThemeColor').appendChild(optColor);
+            }
+            
+            //Add New Template Button System
+            const dataTitle = document.getElementById('datInTitle');
+            const dataDesc = document.getElementById('datInDescription');
+            const dataThemeColor = document.getElementById('datInThemeColor');
+            
+            document.getElementById('btn4AddNewTemplate').addEventListener('click', () => {
+                if(datInTitle.value){
+                    formBoxTmplt.style.display = 'none';
+                    addTemplateBoxToContainer(dataTitle.value, dataDesc.value, dataThemeColor.value);
+                    saveUserProgress();
+
+                    dataTitle.value = '';
+                    dataDesc.value = '';
+                }
+
+            })
+        </script>
+    </body>
+</html>
